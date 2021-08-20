@@ -3,7 +3,6 @@
 import os
 import tarfile
 import urllib.request
-import shutil
 from . import Drain,DrainThunderbird
 
 

@@ -6,7 +6,6 @@ License     : MIT
 
 import regex as re
 import os
-import numpy as np
 import pandas as pd
 import hashlib
 from datetime import datetime

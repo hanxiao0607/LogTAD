@@ -1,6 +1,11 @@
-from utils import preprocessing
+import os
+from utils import preprocessing, SlidingWindow
 from utils.utils import set_seed
 from argparse import ArgumentParser
+import pandas as pd
+import warnings
+warnings.filterwarnings("ignore")
+from model import LogTAD
 
 def arg_parser():
     """
@@ -14,6 +19,7 @@ def arg_parser():
     parser.add_argument("--output_dir", metavar="DIR", help="output directory", default="/Dataset")
     parser.add_argument("--model_dir", metavar="DIR", help="model directory", default="/Dataset")
     parser.add_argument("--random_seed", help="random seed", default=42)
+    parser.add_argument("--download_datasets", help="download datasets or not", default=0)
 
     # training parameters
     parser.add_argument("--max_epoch", help="epochs", default=100)
@@ -53,10 +59,23 @@ def main():
     options = vars(args)
 
     set_seed(options["random_seed"])
-    print("Set seed")
-    preprocessing.parsing(options["source_dataset_name"], options["output_dir"])
-    preprocessing.parsing(options["target_dataset_name"], options["output_dir"])
+    print(f"Set seed: {options['random_seed']}")
+    if options["download_datasets"] == 1:
+        preprocessing.parsing(options["source_dataset_name"], options["output_dir"])
+        preprocessing.parsing(options["target_dataset_name"], options["output_dir"])
+
+    path = "./Dataset"
+    if len(os.listdir(path)) == 0:
+        print("Please download the dataset first")
+        return 1
+
+    df_source = pd.read_csv(f'./Dataset/{options["source_dataset_name"]}.log_structured.csv')
+    print(f'Reading source dataset: {options["source_dataset_name"]} dataset')
+    df_target = pd.read_csv(f'./Dataset/{options["target_dataset_name"]}.log_structured.csv')
+    print(f'Reading target dataset: {options["target_dataset_name"]} dataset')
+    train_normal_s, test_normal_s, test_abnormal_s, r_s_val_df, train_normal_t, test_normal_t, test_abnormal_t, r_t_val_df = SlidingWindow.get_datasets(df_source, df_target, options)
     print('done')
+
 
 
 if __name__ == "__main__":
