@@ -19,7 +19,7 @@ def arg_parser():
     parser.add_argument("--output_dir", metavar="DIR", help="output directory", default="/Dataset")
     parser.add_argument("--model_dir", metavar="DIR", help="model directory", default="/Dataset")
     parser.add_argument("--random_seed", help="random seed", default=42)
-    parser.add_argument("--download_datasets", help="download datasets or not", default=0)
+    parser.add_argument("--download_datasets", help="download datasets or not", default=1)
 
     # training parameters
     parser.add_argument("--max_epoch", help="epochs", default=100)
@@ -76,11 +76,14 @@ def main():
     train_normal_s, test_normal_s, test_abnormal_s, r_s_val_df, train_normal_t, test_normal_t, test_abnormal_t, r_t_val_df, w2v = SlidingWindow.get_datasets(df_source, df_target, options)
     train_iter, test_iter = get_train_eval_iter(train_normal_s, train_normal_t)
     demo_logtad = LogTAD(options)
-    print('here')
     demo_logtad.train_LogTAD(train_iter, test_iter, w2v)
-    print('done')
-
-
+    demo_logtad.load_model()
+    R_src, _ = demo_logtad.get_r_from_val(r_s_val_df)
+    R_trg, _ = demo_logtad.get_r_from_val(r_t_val_df)
+    print(f'Starting to test source dataset: {options["source_dataset_name"]}')
+    demo_logtad.testing(test_normal_s, test_abnormal_s, R_src)
+    print(f'Starting to test target dataset: {options["target_dataset_name"]}')
+    demo_logtad.testing(test_normal_t, test_abnormal_t, R_trg)
 
 if __name__ == "__main__":
     main()

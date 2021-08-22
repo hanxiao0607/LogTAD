@@ -83,3 +83,11 @@ def get_train_eval_iter(train_normal_s, train_normal_t, window_size=20, emb_dim=
     eval_iter = get_iter(X_eval, y_d_eval, y_eval)
     return train_iter, eval_iter
 
+def dist2label(lst_dist, R):
+    y = []
+    for i in lst_dist:
+        if i <= R:
+            y.append(0)
+        else:
+            y.append(1)
+    return y

@@ -9,7 +9,7 @@
 
 ## Installation
 This code requires the packages listed in requirements.txt.
-An virtual environment is recommended to run this code
+A virtual environment is recommended to run this code
 
 On macOS and Linux:  
 ```
@@ -21,6 +21,16 @@ deactivate
 ```
 Reference: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 
-## Experiment
+## Instructions
+LogTAD and other baseline models are implemented on [BGL](https://github.com/logpai/loghub/tree/master/BGL) and [Thunderbird](https://github.com/logpai/loghub/tree/master/Thunderbird) datasets
+
+Clone the template project, replacing ``my-project`` with the name of the project you are creating:
+
+        git clone https://github.com/hanxiao0607/LogTAD.git my-project
+        cd my-project
+
+Run and test:
+
+        python3 main_LogTAD.py
 
 ## Citation
