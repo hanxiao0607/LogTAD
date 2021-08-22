@@ -86,7 +86,7 @@ def word2emb(df_source, df_target, train_size_s, train_size_t, step_size, emb_di
     print(f'Source length after drop none word logs: {len(df_source)}')
     print(f'Target length after drop none word logs: {len(df_target)}')
 
-    return df_source, df_target
+    return df_source, df_target, w2v
 
 def sliding_window(df, window_size = 20, step_size = 4, target = 0, val_date = '2005.11.15'):
     df["Label"] = df["Label"].apply(lambda x: int(x != '-'))
@@ -134,7 +134,7 @@ def get_datasets(df_source, df_target, options, val_date="2005.11.15"):
     emb_dim = options["emb_dim"]
     times =  int(train_size_s/train_size_t) - 1
 
-    df_source, df_target = word2emb(df_source, df_target, train_size_s, train_size_t, step_size, emb_dim)
+    df_source, df_target, w2v = word2emb(df_source, df_target, train_size_s, train_size_t, step_size, emb_dim)
 
     print(f'Start preprocessing for the source: {source} dataset')
     window_df = sliding_window(df_source, window_size, step_size, 0, val_date)
@@ -187,4 +187,4 @@ def get_datasets(df_source, df_target, options, val_date="2005.11.15"):
     print('Target test abnormal size {}'.format(len(test_abnormal_t)))
 
     return train_normal_s, test_normal_s, test_abnormal_s, r_s_val_df, \
-           train_normal_t, test_normal_t, test_abnormal_t, r_t_val_df
+           train_normal_t, test_normal_t, test_abnormal_t, r_t_val_df, w2v
