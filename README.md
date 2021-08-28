@@ -1,4 +1,4 @@
-# LogTAD: Unsupervised Cross-system Log Anomaly Detection via Domain Adaption
+# LogTAD: Unsupervised Cross-system Log Anomaly Detection via Domain Adaptation
 
 ## Configuration
 - Ubuntu 20.04
