@@ -34,3 +34,12 @@ Run and test:
         python3 main_LogTAD.py
 
 ## Citation
+```
+@inproceedings{han2021unsupervised,
+  title={Unsupervised Cross-system Log Anomaly Detection via Domain Adaptation},
+  author={Han, Xiao and Yuan, Shuhan},
+  booktitle={Proceedings of the 30th ACM International Conference on Information \& Knowledge Management},
+  pages={3068--3072},
+  year={2021}
+}
+```
