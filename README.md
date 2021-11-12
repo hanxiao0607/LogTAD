@@ -1,4 +1,5 @@
 # LogTAD: Unsupervised Cross-system Log Anomaly Detection via Domain Adaptation
+A Pytorch implementation of [LogTAD](https://dl.acm.org/doi/abs/10.1145/3459637.3482209).
 
 ## Configuration
 - Ubuntu 20.04
