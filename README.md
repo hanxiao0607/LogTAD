@@ -1,6 +1,5 @@
 [![License](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/hanxiao0607/LogTAD/blob/main/LICENSE)
 ![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)
-[![HitCount](https://hits.dwyl.com/hanxiao0607/LogTAD.svg?style=flat)](http://hits.dwyl.com/hanxiao0607/LogTAD)
 
 # LogTAD: Unsupervised Cross-system Log Anomaly Detection via Domain Adaptation
 A Pytorch implementation of [LogTAD](https://dl.acm.org/doi/abs/10.1145/3459637.3482209).
