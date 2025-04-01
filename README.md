@@ -4,14 +4,14 @@
 # LogTAD: Unsupervised Cross-system Log Anomaly Detection via Domain Adaptation
 A Pytorch implementation of [LogTAD](https://dl.acm.org/doi/abs/10.1145/3459637.3482209).
 
-## Configuration
+## 🧰 Configuration
 - Ubuntu 20.04
 - NVIDIA driver 460.73.01 
 - CUDA 11.2
 - Python 3.9
 - PyTorch 1.9.0
 
-## Installation
+## ⚙️ Installation
 This code requires the packages listed in requirements.txt.
 A virtual environment is recommended to run this code
 
@@ -25,7 +25,7 @@ deactivate
 ```
 Reference: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 
-## Instructions
+## 🚀 Instructions
 LogTAD and other baseline models are implemented on [BGL](https://github.com/logpai/loghub/tree/master/BGL) and [Thunderbird](https://github.com/logpai/loghub/tree/master/Thunderbird) datasets
 
 Clone the template project, replacing ``my-project`` with the name of the project you are creating:
@@ -37,7 +37,7 @@ Run and test:
 
         python3 main_LogTAD.py
 
-## Citation
+## 📄 Citation
 ```
 @inproceedings{han2021unsupervised,
   title={Unsupervised Cross-system Log Anomaly Detection via Domain Adaptation},
